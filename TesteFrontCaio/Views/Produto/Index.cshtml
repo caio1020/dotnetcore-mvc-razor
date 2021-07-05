@@ -1,0 +1,53 @@
+﻿@model List<ProdutoModel>
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Listagem de produtos</h1>
+
+    <div class="container">
+        <a style=" float: left; margin-bottom: 22px;" asp-action="Create" asp-controller="Produto" class="btn btn-secondary">Novo produto</a>
+
+        <br />
+
+        <partial name="_mensagens.cshtml" />
+
+        <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Código</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (ProdutoModel produto in Model)
+                    {
+                        <tr>
+                            <th scope="row">@produto.Id</th>
+                            <td>@produto.Nome</td>
+                            <td>R$ @produto.Preco</td>
+                            <td>@produto.Quantidade</td>
+                            <td>@produto.DataCadastro.ToString("g")</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Ações">
+                                    <a class="btn btn-primary" asp-route-id="@produto.Id" asp-action="Edit" asp-controller="Produto">Editar</a>
+                                    <a class="btn btn-danger" asp-route-id="@produto.Id" asp-action="Delete" asp-controller="Produto">Excluir</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model ProdutoModel
+@{
+    ViewData["Title"] = "Edição do Produto";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Criar produto</h1>
+
+    <br />
+
+    <partial name="_mensagens.cshtml" />
+
+    <br />
+
+    <div class="container">
+
+        <form method="post" class="row" asp-action="Create" asp-controller="Produto">
+            <div class="col-md-4">
+                <label class="form-label">Nome</label>
+                <input type="text" asp-for="Nome" class="form-control" required>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Preço (R$)</label>
+                <input type="text" asp-for="Preco" class="form-control" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Quantidade</label>
+                <input type="number" asp-for="Quantidade" class="form-control" required>
+            </div>
+
+            <div class="col-12">
+                <br />
+                <button class="btn btn-primary btn-block" type="submit">Criar</button>
+                <a asp-action="Index" asp-controller="Produto" class="btn btn-secondary btn-block">Voltar</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
